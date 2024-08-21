@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena2Controller">
+   <children>
+      <TextArea fx:id="clusterArea" layoutY="77.0" prefHeight="323.0" prefWidth="600.0" />
+      <Label fx:id="fileLabel" layoutX="79.0" layoutY="14.0" prefHeight="16.0" prefWidth="127.0" text="Insert the file's name:" />
+      <TextField fx:id="fileSpace" layoutX="225.0" layoutY="10.0" />
+      <RadioButton fx:id="loadFromFileButton" layoutX="399.0" layoutY="14.0" mnemonicParsing="false" onAction="#execute" prefHeight="17.0" prefWidth="83.0" text="Execute" />
+   </children>
+</AnchorPane>
