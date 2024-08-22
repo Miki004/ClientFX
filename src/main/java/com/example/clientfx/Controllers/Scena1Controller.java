@@ -32,6 +32,7 @@ public class Scena1Controller {
     private TextArea outputArea;
     private MainTest client;
 
+
     public void riceviTabella(ActionEvent e) {
         client.setNameFile(tableSpace.getText());
         SendTable();
@@ -62,6 +63,7 @@ public class Scena1Controller {
         ipField.setText(ip);
         portField.setText(String.valueOf(port));
         try {
+            outputArea.appendText(ip + port);
             client = new MainTest(ip, port);
             client.setMainScene(this);
             outputArea.appendText("Connected to server at " + ip + ":" + port + "\n");
