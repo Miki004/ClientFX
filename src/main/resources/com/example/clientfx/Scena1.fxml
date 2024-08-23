@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena1Controller">
-   <VBox layoutX="10.0" layoutY="7.0" spacing="10" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
+   <VBox layoutX="10.0" layoutY="7.0" prefHeight="569.0" prefWidth="482.0" spacing="10" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="7.0">
       <HBox spacing="10" />
       <HBox spacing="10" />
       <Label text="Insert a table's name:" />
@@ -28,6 +28,6 @@
       <Button onAction="#executeSelectedOption" text="Execute" />
 
       <!-- Output Area -->
-      <TextArea fx:id="outputArea" prefHeight="200" wrapText="true" />
+      <TextArea fx:id="outputArea" prefHeight="186.0" prefWidth="482.0" wrapText="true" />
    </VBox>
 </AnchorPane>
