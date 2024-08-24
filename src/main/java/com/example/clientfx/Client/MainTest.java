@@ -2,7 +2,6 @@ package com.example.clientfx.Client;
 
 import com.example.clientfx.Controllers.Scena1Controller;
 import com.example.clientfx.Controllers.Scena3Controller;
-import javafx.application.Application;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,6 +17,7 @@ public class MainTest {
     private Scena1Controller mainScene;
     private String output;
     private String nameFile;
+    private String nameTable;
     private int dType;
     private int depth;
     private ObjectOutputStream out;
@@ -61,23 +61,19 @@ public class MainTest {
     public void loadDataOnServer() throws IOException, ClassNotFoundException {
         boolean flag=false;
         do {
-            //System.out.println("Nome tabella:");
-            //String tableName = Keyboard.readString(); //inserisco il nome della tabella all'utente
             out.writeObject(0);//spediamo al server 0
-            out.writeObject(nameFile); //spediamo al server il nome della tabella
+            out.writeObject(getNameTable()); //spediamo al server il nome della tabella
             String risposta = (String) (in.readObject()); //il server deve rispondere al client con OK
             if (risposta.equals("OK")) {
                 flag = true;
             } else {
                 mainScene.writeOnArea(risposta);
-                //System.out.println(risposta);
+
             }
         }while(!flag);
     }
 
     public void loadDedrogramFromFileOnServer() throws IOException, ClassNotFoundException {
-        //System.out.println("Inserire il nome dell'archivio (comprensivo di estensione):");
-        //String fileName=Keyboard.readString();
         out.writeObject(2);
         out.writeObject(nameFile); //spediamo il nome sul quale cercare il file
         String risposta= (String) (in.readObject()); //Se il sever risponde Ok
@@ -89,23 +85,11 @@ public class MainTest {
 
     public void mineDedrogramOnServer() throws IOException, ClassNotFoundException {
         out.writeObject(1);
-        //System.out.println("Introdurre la profondita' del dendrogramma:");
-        //int depth=Keyboard.readInt();
         out.writeObject(depth);
-        /*
-        int dType=-1;
-        do {
-            System.out.println("Distanza: single-link (1), average-link (2):");
-            dType=Keyboard.readInt();
-        }while (dType<=0 || dType>2);
-        */
         out.writeObject(dType);
         String risposta = (String) (in.readObject());
         if(risposta.equals("OK")) {
             output= (String) in.readObject();
-            // System.out.println(in.readObject()); // stampo il dendrogramma che il server mi sta inviando
-            //System.out.println("Inserire il nome dell'archivio (comprensivo di estensione):");
-            //String fileName=Keyboard.readString();
             System.out.println(nameFile);
             out.writeObject(nameFile);
         }
@@ -140,15 +124,16 @@ public class MainTest {
         dType=i;
     }
 
-    public int getDepth() {
-        return depth;
-    }
-    public int getdType() {
-        return dType;
-    }
-
     public void setScene(Scena3Controller scena3Controller) {
         scena=scena3Controller;
+    }
+
+    public void setNameTable(String nameTable) {
+        this.nameTable = nameTable;
+    }
+
+    public String getNameTable() {
+        return nameTable;
     }
 }
 

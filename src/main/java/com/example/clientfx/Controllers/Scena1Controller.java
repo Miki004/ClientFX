@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.Objects;
+
 /**
  * Controller per la gestione della prima scena dell'applicazione.
  * Gestisce la connessione al server, l'invio di dati e il passaggio tra diverse scene.
@@ -36,21 +36,22 @@ public class Scena1Controller {
     private MainTest client;
 
 
+
     /**
      * Riceve il nome della tabella dallo spazio di input e lo invia al server.
      *
      * @param e L'evento di azione associato all'invocazione del metodo.
      */
     public void riceviTabella(ActionEvent e) {
-        client.setNameFile(tableSpace.getText());
-        SendTable();
-    }
-
-    /**
-     * Imposta il nome della tabella basato sul contenuto dello spazio di input.
-     */
-    public void writeOnTableSpace() {
-        client.setNameFile(tableSpace.getText());
+            client.setNameFile(tableSpace.getText());
+            try {
+               client.loadDataOnServer();
+               outputArea.appendText("Sent data: " + "\n");
+            } catch (IOException | ClassNotFoundException ev) {
+                outputArea.appendText("Failed to send data: " + ev.getMessage() + "\n");
+                outputArea.appendText("Please enter an existing table" + "\n");
+                tableSpace.clear();
+            }
     }
 
     /**
@@ -69,18 +70,6 @@ public class Scena1Controller {
      */
     public MainTest getClient() {
         return client;
-    }
-
-    /**
-     * Invia i dati al server e scrive un messaggio di conferma o di errore nell'area di output.
-     */
-    public void SendTable() {
-        try {
-            client.loadDataOnServer();
-            outputArea.appendText("Sent data: " + "\n");
-        } catch (IOException | ClassNotFoundException e) {
-            outputArea.appendText("Failed to send data: " + e.getMessage() + "\n");
-        }
     }
 
     /**
@@ -129,4 +118,15 @@ public class Scena1Controller {
         }
     }
 
+    public void requestNameTable() {
+        tableSpace.clear();
+        String nameTable;
+        do {
+             nameTable=tableSpace.getText();
+            if (nameTable != null) {
+                client.setNameTable(nameTable);
+            }
+        }while (nameTable==null);
+
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.clientfx;
 
 import com.example.clientfx.Client.MainTest;
+import com.example.clientfx.Controllers.Scena0Controller;
 import com.example.clientfx.Controllers.Scena1Controller;
 import com.example.clientfx.Controllers.Scena2Controller;
 import com.example.clientfx.Controllers.Scena3Controller;
@@ -22,6 +23,14 @@ public class Main extends Application {
     private static int port;
     private MainTest client;
 
+    public static void setIp(String ip) {
+        Main.ip = ip;
+    }
+
+    public static void setPort(int port) {
+        Main.port = port;
+    }
+
     /**
      * Punto di ingresso principale dell'applicazione JavaFX.
      * Configura la finestra principale e mostra la scena iniziale.
@@ -33,9 +42,18 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ClientFX Application");
-        showScena1();
-    }
 
+        showScena0();
+    }
+    public void showScena0() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena0.fxml"));
+        Parent root = loader.load();
+        Scena0Controller controller = loader.getController();
+        controller.setMainGui(this);
+        primaryStage.setScene(new Scene(root,400,400));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
     /**
      * Mostra la prima scena dell'applicazione.
      * Inizializza la connessione al server e imposta il controller della scena.
@@ -81,8 +99,6 @@ public class Main extends Application {
      *             il secondo è la porta del server.
      */
     public static void main(String[] args) {
-        ip = args[0];
-        port = Integer.parseInt(args[1]);
 
         launch(args);
     }
