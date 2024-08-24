@@ -39,9 +39,9 @@ public class MainTest {
         InetAddress addr = InetAddress.getByName(ip); //ip
         System.out.println("addr = " + addr);
         Socket socket = new Socket(addr, port); //Port
-        System.out.println(socket);
         out = new ObjectOutputStream(socket.getOutputStream());
-        in = new ObjectInputStream(socket.getInputStream());	; // stream con richieste del client
+        in = new ObjectInputStream(socket.getInputStream());
+
     }
 
     private int menu(){
