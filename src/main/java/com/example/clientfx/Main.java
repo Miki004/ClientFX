@@ -23,6 +23,7 @@ public class Main extends Application {
     private static int port;
     private MainTest client;
 
+
     public static void setIp(String ip) {
         Main.ip = ip;
     }
@@ -42,7 +43,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ClientFX Application");
-
         showScena0();
     }
     public void showScena0() throws IOException {
@@ -63,10 +63,9 @@ public class Main extends Application {
     public void showScena1() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena1.fxml"));
         Parent root = loader.load();
-        Scena1Controller controller = loader.getController();
+        Scena1Controller controller= loader.getController();
         controller.initializeConnection(ip,port);
-        controller.setMainApp(this);
-        client=controller.getClient();
+        controller.setMainGui(this);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -81,8 +80,6 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena2.fxml"));
             Parent root = loader.load();
             Scena2Controller controller = loader.getController();
-            controller.setClient(client);
-            controller.setMainApp(this);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (IOException e) {
@@ -112,8 +109,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena3.fxml"));
             Parent root = loader.load();
             Scena3Controller controller = loader.getController();
-            controller.setClient(client);
-            controller.setMainApp(this);
+
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (IOException e) {

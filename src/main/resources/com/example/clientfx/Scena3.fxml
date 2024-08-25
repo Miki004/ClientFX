@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="choiceBox" prefHeight="433.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena3Controller">
-   <children>
-      <TextField fx:id="spaceDepth" layoutX="45.0" layoutY="40.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="8.0" layoutY="44.0" prefHeight="18.0" prefWidth="41.0" text="Depth:" AnchorPane.leftAnchor="8.0" />
-      <Label layoutX="8.0" layoutY="14.0" prefHeight="18.0" prefWidth="170.0" text="Please enter the following steps" AnchorPane.leftAnchor="8.0" />
-      <Label layoutX="334.0" layoutY="40.0" prefHeight="25.0" prefWidth="92.0" text="Type of distance" />
-      <ChoiceBox fx:id="choiceDistance" layoutX="426.0" layoutY="40.0" prefHeight="25.0" prefWidth="150.0" />
-      <TextArea fx:id="mineArea" layoutX="14.0" layoutY="143.0" prefHeight="246.0" prefWidth="628.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <TextField fx:id="spaceSave" layoutX="160.0" layoutY="77.0" />
-      <Label fx:id="nameFileLabel" layoutX="8.0" layoutY="81.0" prefHeight="18.0" prefWidth="150.0" text="Please enter the file's name:" AnchorPane.leftAnchor="8.0" />
-      <Button fx:id="mineButton" layoutX="16.0" layoutY="109.0" mnemonicParsing="false" onAction="#execute" text="Execute" />
-      <Button fx:id="backButton" layoutX="576.0" layoutY="399.0" mnemonicParsing="false" onAction="#goBackToScene1" text="Back" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="400.0" />
-   </children>
-</AnchorPane>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena3Controller" />

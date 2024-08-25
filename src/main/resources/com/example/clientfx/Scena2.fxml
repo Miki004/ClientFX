@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena2Controller">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena2Controller">
    <children>
-      <TextArea fx:id="clusterArea" layoutX="6.0" layoutY="61.0" prefHeight="290.0" prefWidth="588.0" />
-      <Label fx:id="fileLabel" layoutX="79.0" layoutY="14.0" prefHeight="16.0" prefWidth="127.0" text="Insert the file's name:" />
-      <TextField fx:id="fileSpace" layoutX="225.0" layoutY="10.0" />
-      <RadioButton fx:id="loadFromFileButton" layoutX="399.0" layoutY="14.0" mnemonicParsing="false" onAction="#execute" prefHeight="17.0" prefWidth="83.0" text="Execute" />
-      <Button fx:id="backButton" layoutX="505.0" layoutY="361.0" mnemonicParsing="false" onAction="#goBackToScene1" text="Back" />
+      <TextArea prefHeight="400.0" prefWidth="296.0" />
+      <Label layoutX="319.0" layoutY="65.0" prefHeight="17.0" prefWidth="80.0" text="Depth:" />
+      <TextField layoutX="416.0" layoutY="61.0" />
+      <ChoiceBox layoutX="416.0" layoutY="120.0" prefWidth="150.0" />
+      <TextField layoutX="312.0" layoutY="314.0" />
+      <Label layoutX="312.0" layoutY="287.0" prefHeight="17.0" prefWidth="150.0" text="Enter the archive's name" />
+      <Button layoutX="509.0" layoutY="314.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="522.0" layoutY="161.0" mnemonicParsing="false" text="Build" />
+      <Label layoutX="319.0" layoutY="124.0" prefHeight="17.0" prefWidth="80.0" text="Type Link" />
    </children>
-</AnchorPane>
+</Pane>

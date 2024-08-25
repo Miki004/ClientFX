@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 
 public class Scena0Controller {
@@ -46,7 +47,6 @@ public class Scena0Controller {
         }catch ( IOException | NullPointerException | IllegalArgumentException e) {
             return false;
         }
-
     }
 
     public void setMainGui(Main mainGui) {
