@@ -1,6 +1,7 @@
 module com.example.clientfx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.net.http;
 
 
     opens com.example.clientfx to javafx.fxml;

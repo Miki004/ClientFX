@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena3Controller" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena3Controller">
+   <children>
+      <Button fx:id="loadButton" layoutX="410.0" layoutY="51.0" mnemonicParsing="false" onAction="#loadClustering" text="Load" />
+      <TextField fx:id="loadField" layoutX="213.0" layoutY="51.0" />
+      <Label layoutX="55.0" layoutY="51.0" prefHeight="25.0" prefWidth="134.0" text="Insert the file's name:" />
+      <TextArea fx:id="loadArea" layoutY="113.0" prefHeight="289.0" prefWidth="600.0" />
+   </children>
+</Pane>

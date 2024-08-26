@@ -18,7 +18,9 @@ public class MainTest {
      */
     private Scena1Controller c1;
     private Scena2Controller c2;
-    private Scena3Controller c3;
+    private int depth;
+    private int option;
+    private String output;
     private ObjectOutputStream out;
     private ObjectInputStream in ; // stream con richieste del client
 
@@ -33,7 +35,7 @@ public class MainTest {
     }
 
     public void loadDataOnServer(String nameTable) throws IOException, ClassNotFoundException {
-        out.writeObject(0);//spediamo al server 0
+        out.writeObject(0);
         out.writeObject(nameTable);
     }
     public List<String> request() throws IOException, ClassNotFoundException {
@@ -42,39 +44,56 @@ public class MainTest {
 
     }
 
-    public void loadDedrogramFromFileOnServer() throws IOException, ClassNotFoundException {
+    public void loadDedrogramFromFileOnServer(String nameFile) throws IOException, ClassNotFoundException {
         out.writeObject(2);
-      //  out.writeObject(nameFile); //spediamo il nome sul quale cercare il file
-        String risposta= (String) (in.readObject()); //Se il sever risponde Ok
+        out.writeObject(nameFile);
+        String risposta= (String) (in.readObject());
         if(risposta.equals("OK")) {
-            // output=in.readObject().toString();// stampo il dendrogramma che il server mi sta inviando
+            output=in.readObject().toString();
         } else{
-            System.out.println(risposta); // stampo il messaggio di errore
+           output=risposta;
         }
 
     }
 
     public void mineDedrogramOnServer() throws IOException, ClassNotFoundException {
         out.writeObject(1);
-        //out.writeObject();
-       // out.writeObject();
-        String risposta = (String) (in.readObject());
+        out.writeObject(depth);
+        out.writeObject(option);
+        String risposta = (String) in.readObject();
         if(risposta.equals("OK")) {
-            //= (String) in.readObject();
-            System.out.println();
-            //out.writeObject();
+            output=(String) in.readObject();
+        }else{
+            output=risposta; // stampo il messaggio di errore
         }
-        else
-            System.out.println(risposta); // stampo il messaggio di errore
     }
 
-
-    public void setController1(Scena1Controller controller) {
-        this.c1=controller;
+    public void setDepth(int text) {
+        this.depth=text;
     }
 
-    public Scena1Controller getController1() {
-        return this.c1;
+    public void setOption(String value) {
+        if(value.equals("Single-Link-Distance")) {
+            option=1;
+        } else if (value.equals("Average-Link-Distance")) {
+            option=2;
+        } else if (value.equals("Save")) {
+            option=3;
+        }
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    public void save() throws IOException {
+        out.writeObject(3);
+        out.writeObject(c2.getNameFile());
+
+    }
+
+    public void setControllerScena2(Scena2Controller controller) {
+        this.c2=controller;
     }
 }
 

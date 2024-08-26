@@ -8,7 +8,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
-import java.util.List;
 
 public class Scena1Controller {
 
@@ -25,6 +24,7 @@ public class Scena1Controller {
     public void initializeConnection(String ip, int port) {
         try {
             client = new MainTest(ip,port);
+            mainGui.setClient(client);
             try {
                listTables.getItems().addAll(client.request());
             } catch (ClassNotFoundException e) {
@@ -43,14 +43,15 @@ public class Scena1Controller {
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-            mainGui.switchToScene2();
+            mainGui.switchToScene3();
+
         }else if (clusterButton.isSelected()) {
             try {
                 client.loadDataOnServer(listTables.getSelectionModel().getSelectedItem());
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-            mainGui.switchToScene3();
+            mainGui.switchToScene2();
         }
     }
     public void setMainGui(Main mainGui) {

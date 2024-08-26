@@ -19,6 +19,7 @@ public class Scena0Controller {
     private Main mainGui;
 
     public void start(ActionEvent event) throws Exception {
+
         String ip=ipField.getText();
         Integer port=null;
         try {
@@ -34,7 +35,9 @@ public class Scena0Controller {
             mainGui.showScena1();
         }else {
             ErrorWindow error= new ErrorWindow();
-            error.showErrorWindow();
+            error.showErrorWindow("Connection Error", "Connection Error","An error has occurred during the connection with the server");
+            ipField.clear();
+            portField.clear();
         }
     }
 

@@ -64,8 +64,8 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena1.fxml"));
         Parent root = loader.load();
         Scena1Controller controller= loader.getController();
-        controller.initializeConnection(ip,port);
         controller.setMainGui(this);
+        controller.initializeConnection(ip,port);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -80,6 +80,9 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena2.fxml"));
             Parent root = loader.load();
             Scena2Controller controller = loader.getController();
+            controller.setClient(this.client);
+            controller.setMain(this);
+            this.client.setControllerScena2(controller);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (IOException e) {
@@ -109,11 +112,16 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena3.fxml"));
             Parent root = loader.load();
             Scena3Controller controller = loader.getController();
-
+            controller.setClient(this.client);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void setClient(MainTest client) {
+        this.client=client;
+    }
+
 }
