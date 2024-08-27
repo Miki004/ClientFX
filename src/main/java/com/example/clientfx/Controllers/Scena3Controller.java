@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -29,7 +28,6 @@ public class Scena3Controller {
             client.loadDedrogramFromFileOnServer(loadField.getText());
             loadArea.appendText(client.getOutput());
         } catch (IOException | ClassNotFoundException e) {
-            //settare alert
             new ErrorWindow().showErrorWindow("Loading Error","Loading Error","An error occurs during the clustering uploading");
         }
     }

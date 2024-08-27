@@ -8,10 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena2Controller">
    <children>
-      <TextArea fx:id="outputArea" prefHeight="400.0" prefWidth="296.0" />
+      <TextArea fx:id="outputArea" prefHeight="400.0" prefWidth="301.0" />
       <Label layoutX="319.0" layoutY="34.0" prefHeight="17.0" prefWidth="80.0" text="Depth:" />
       <TextField fx:id="depthField" layoutX="416.0" layoutY="30.0" />
       <ChoiceBox fx:id="clusteringOptions" layoutX="416.0" layoutY="75.0" prefWidth="150.0" />
@@ -22,6 +21,6 @@
       <Label layoutX="319.0" layoutY="79.0" prefHeight="17.0" prefWidth="80.0" text="Type Link" />
       <Label fx:id="labelOption" layoutX="313.0" layoutY="146.0" prefHeight="17.0" prefWidth="149.0" text="Do you want save it?" visible="false" />
       <RadioButton fx:id="yesButton" layoutX="316.0" layoutY="183.0" mnemonicParsing="false" onAction="#showSave" text="Yes" visible="false" />
-      <RadioButton fx:id="noButton" layoutX="405.0" layoutY="183.0" mnemonicParsing="false" text="No" visible="false" />
+      <RadioButton fx:id="noButton" layoutX="405.0" layoutY="183.0" mnemonicParsing="false" onAction="#goBack" text="No" visible="false" />
    </children>
 </Pane>

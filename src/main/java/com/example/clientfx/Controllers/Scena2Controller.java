@@ -26,6 +26,7 @@ public class Scena2Controller implements Initializable {
     private MainTest client;
     private String nameFile;
     private Main main;
+
     public void buildCluster(ActionEvent event) {
         try {
             client.setDepth(Integer.parseInt(depthField.getText()));
@@ -35,9 +36,9 @@ public class Scena2Controller implements Initializable {
             labelOption.setVisible(true);
             yesButton.setVisible(true);
             noButton.setVisible(true);
-        } catch (IOException |ClassNotFoundException e) {
-            //Settare un alert
-
+        } catch (IOException | ClassNotFoundException | NumberFormatException e) {
+            new ErrorWindow().showErrorWindow("Mining Error","Mining Error","An error occurs during the clustering building");
+            depthField.clear();
         }
     }
 
@@ -56,11 +57,8 @@ public class Scena2Controller implements Initializable {
                 nameFile=saveField.getText();
                 client.save();
                 main.showScena1();
-            }catch (IOException e) {
-                //alert per il salvataggio
+            }catch (Exception e) {
                 new ErrorWindow().showErrorWindow("Saving Error","Saving Error","An error occurs during the clustering saving");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
     }
 
@@ -76,5 +74,13 @@ public class Scena2Controller implements Initializable {
 
     public void setMain(Main main) {
         this.main=main;
+    }
+
+    public void goBack(ActionEvent event) {
+        try {
+            main.showScena1();
+        } catch (Exception e) {
+            new ErrorWindow().showErrorWindow("Go back Error","Go back Error","An error occurs during the turning back ");
+        }
     }
 }
