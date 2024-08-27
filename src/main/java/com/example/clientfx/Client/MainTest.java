@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
+import java.util.Objects;
 
 public class MainTest {
     /**
@@ -35,8 +36,15 @@ public class MainTest {
     }
 
     public void loadDataOnServer(String nameTable) throws IOException, ClassNotFoundException {
+        String risposta;
         out.writeObject(0);
         out.writeObject(nameTable);
+        risposta= (String) in.readObject();
+        if(Objects.equals(risposta, "OK")) {
+            output=risposta;
+        }else{
+            throw new ClassNotFoundException();
+        }
     }
     public List<String> request() throws IOException, ClassNotFoundException {
         out.writeObject(3);

@@ -1,6 +1,7 @@
 package com.example.clientfx.Controllers;
 
 import com.example.clientfx.Client.MainTest;
+import com.example.clientfx.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ public class Scena3Controller {
     @FXML
     public TextArea loadArea;
     private MainTest client;
+    private Main main;
 
     public void setClient(MainTest client) {
         this.client=client;
@@ -27,9 +29,15 @@ public class Scena3Controller {
             loadArea.clear();
             client.loadDedrogramFromFileOnServer(loadField.getText());
             loadArea.appendText(client.getOutput());
+
         } catch (IOException | ClassNotFoundException e) {
             new ErrorWindow().showErrorWindow("Loading Error","Loading Error","An error occurs during the clustering uploading");
         }
     }
+
+    public void setMain(Main main) {
+        this.main=main;
+    }
+
 }
 

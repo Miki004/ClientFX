@@ -27,6 +27,7 @@ public class Scena1Controller {
             mainGui.setClient(client);
             try {
                listTables.getItems().addAll(client.request());
+               listTables.getSelectionModel().clearSelection();
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
@@ -36,22 +37,35 @@ public class Scena1Controller {
     }
 
 
-    public void execute(ActionEvent event) throws IOException{
+    public void execute(ActionEvent event)  {
+
         if(loadButton.isSelected()) {
             try {
                 client.loadDataOnServer(listTables.getSelectionModel().getSelectedItem());
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                mainGui.switchToScene3();
+            } catch (IOException | ClassNotFoundException e) {
+                new ErrorWindow().showErrorWindow("Data Error","Data Error","An error occurred during the data loading"+"\n"+ "Table selected maybe empty");
+                try {
+                    mainGui.showScena1();
+                } catch (Exception ex) {
+                    System.out.println("err");
+                }
             }
-            mainGui.switchToScene3();
+
 
         }else if (clusterButton.isSelected()) {
             try {
                 client.loadDataOnServer(listTables.getSelectionModel().getSelectedItem());
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                mainGui.switchToScene2();
+            } catch (IOException | ClassNotFoundException e) {
+                new ErrorWindow().showErrorWindow("Data Error","Data Error","An error occurred during the data loading"+"\n"+ "Table selected maybe empty");
+                try {
+                    mainGui.showScena1();
+                } catch (Exception ex) {
+                    System.out.println("err");
+                }
             }
-            mainGui.switchToScene2();
+
         }
     }
     public void setMainGui(Main mainGui) {

@@ -112,6 +112,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena3.fxml"));
             Parent root = loader.load();
             Scena3Controller controller = loader.getController();
+            controller.setMain(this);
             controller.setClient(this.client);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

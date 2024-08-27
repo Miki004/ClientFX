@@ -27,7 +27,7 @@ public class Scena2Controller implements Initializable {
     private String nameFile;
     private Main main;
 
-    public void buildCluster(ActionEvent event) {
+    public void buildCluster(ActionEvent event) throws Exception {
         try {
             client.setDepth(Integer.parseInt(depthField.getText()));
             client.setOption(clusteringOptions.getValue());
@@ -39,6 +39,7 @@ public class Scena2Controller implements Initializable {
         } catch (IOException | ClassNotFoundException | NumberFormatException e) {
             new ErrorWindow().showErrorWindow("Mining Error","Mining Error","An error occurs during the clustering building");
             depthField.clear();
+            main.showScena1();
         }
     }
 
