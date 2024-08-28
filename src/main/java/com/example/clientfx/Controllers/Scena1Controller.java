@@ -8,6 +8,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
+import java.util.List;
 
 public class Scena1Controller {
 
@@ -20,22 +21,22 @@ public class Scena1Controller {
     @FXML
     private ListView<String> listTables;
     private Main mainGui;
+    private static int count=0;
+    private static List<String> list;
 
-    public void initializeConnection(String ip, int port) {
-        try {
-            client = new MainTest(ip,port);
-            mainGui.setClient(client);
+    public void initializeTables() {
+        if (count==0) {
             try {
-               listTables.getItems().addAll(client.request());
-               listTables.getSelectionModel().clearSelection();
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                list=client.request();
+            } catch (ClassNotFoundException |IOException e) {
+                new ErrorWindow().showErrorWindow("Tables Error","Tables Error","An error occurred during the tablese initialization");
+
             }
-        } catch (IOException e) {
-
+            count++;
         }
+        listTables.getItems().addAll(list);
+        listTables.getSelectionModel().clearSelection();
     }
-
 
     public void execute(ActionEvent event)  {
 
@@ -44,15 +45,13 @@ public class Scena1Controller {
                 client.loadDataOnServer(listTables.getSelectionModel().getSelectedItem());
                 mainGui.switchToScene3();
             } catch (IOException | ClassNotFoundException e) {
-                new ErrorWindow().showErrorWindow("Data Error","Data Error","An error occurred during the data loading"+"\n"+ "Table selected maybe empty");
+                new ErrorWindow().showErrorWindow("Data Error","Data Error","An error occurred during the data loading "+"\n"+ " Table selected maybe empty");
                 try {
                     mainGui.showScena1();
                 } catch (Exception ex) {
                     System.out.println("err");
                 }
             }
-
-
         }else if (clusterButton.isSelected()) {
             try {
                 client.loadDataOnServer(listTables.getSelectionModel().getSelectedItem());
@@ -62,7 +61,7 @@ public class Scena1Controller {
                 try {
                     mainGui.showScena1();
                 } catch (Exception ex) {
-                    System.out.println("err");
+                    System.out.println("er");
                 }
             }
 
@@ -70,5 +69,9 @@ public class Scena1Controller {
     }
     public void setMainGui(Main mainGui) {
         this.mainGui = mainGui;
+    }
+
+    public void setClient(MainTest client) {
+        this.client=client;
     }
 }

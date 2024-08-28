@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Scena0Controller {
     public Label errorLabel;
@@ -32,10 +33,8 @@ public class Scena0Controller {
         if(tryConnection(ip,port)) {
             mainGui.setIp(ip);
             mainGui.setPort(port);
-            mainGui.showScena1();
+            mainGui.showScenaSetDB();
         }else {
-            ErrorWindow error= new ErrorWindow();
-            error.showErrorWindow("Connection Error", "Connection Error","An error has occurred during the connection with the server");
             ipField.clear();
             portField.clear();
         }
@@ -47,9 +46,11 @@ public class Scena0Controller {
             s=new Socket(ip,port);
             s.close();
             return true;
-        }catch ( IOException | NullPointerException | IllegalArgumentException e) {
-            return false;
+        }catch (IOException | NullPointerException | IllegalArgumentException e) {
+            new ErrorWindow().showErrorWindow("Connection Error", "Connection Error","An error has occurred during the connection with the server");
+
         }
+        return false;
     }
 
     public void setMainGui(Main mainGui) {

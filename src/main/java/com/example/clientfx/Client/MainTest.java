@@ -46,8 +46,17 @@ public class MainTest {
             throw new ClassNotFoundException();
         }
     }
+
+    public void setDatabase(String Server,String database, Integer Port, String User,String pw) throws IOException{
+        out.writeObject(Server);
+        out.writeObject(database);
+        out.writeObject(Port);
+        out.writeObject(User);
+        out.writeObject(pw);
+
+    }
+
     public List<String> request() throws IOException, ClassNotFoundException {
-        out.writeObject(3);
         return (List<String>) in.readObject();
 
     }
@@ -102,6 +111,14 @@ public class MainTest {
 
     public void setControllerScena2(Scena2Controller controller) {
         this.c2=controller;
+    }
+
+    public boolean getAnswer() throws IOException, ClassNotFoundException {
+        if(in.readObject()=="OK") {
+            return false;
+        }else {
+            return true;
+        }
     }
 }
 

@@ -1,10 +1,7 @@
 package com.example.clientfx;
 
 import com.example.clientfx.Client.MainTest;
-import com.example.clientfx.Controllers.Scena0Controller;
-import com.example.clientfx.Controllers.Scena1Controller;
-import com.example.clientfx.Controllers.Scena2Controller;
-import com.example.clientfx.Controllers.Scena3Controller;
+import com.example.clientfx.Controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,7 +62,8 @@ public class Main extends Application {
         Parent root = loader.load();
         Scena1Controller controller= loader.getController();
         controller.setMainGui(this);
-        controller.initializeConnection(ip,port);
+        controller.setClient(client);
+        controller.initializeTables();
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 
@@ -125,4 +123,21 @@ public class Main extends Application {
         this.client=client;
     }
 
+    public void showScenaSetDB() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/ScenaDB.fxml"));
+        Parent root = loader.load();
+        ScenaDbController controller = loader.getController();
+        controller.setMain(this);
+        controller.setClient(this.client);
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public int getPort() {
+        return port;
+    }
 }
