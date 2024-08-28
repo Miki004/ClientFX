@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.ScenaDbController">
+   <children>
+      <Button layoutX="342.0" layoutY="242.0" mnemonicParsing="false" onAction="#configure" prefHeight="25.0" prefWidth="115.0" text="Configure" />
+      <Label layoutX="93.0" layoutY="51.0" prefHeight="17.0" prefWidth="97.0" text="Server:" />
+      <TextField fx:id="serverField" layoutX="95.0" layoutY="87.0" />
+      <Label layoutX="93.0" layoutY="134.0" prefHeight="17.0" prefWidth="97.0" text="Database:" />
+      <TextField fx:id="databaseField" layoutX="93.0" layoutY="165.0" />
+      <TextField fx:id="portField" layoutX="335.0" layoutY="87.0" />
+      <Label layoutX="335.0" layoutY="51.0" prefHeight="17.0" prefWidth="97.0" text="Port:" />
+      <TextField fx:id="userField" layoutX="93.0" layoutY="242.0" />
+      <Label layoutX="93.0" layoutY="211.0" prefHeight="17.0" prefWidth="97.0" text="User:" />
+      <PasswordField fx:id="pwField" layoutX="335.0" layoutY="165.0" />
+      <Label layoutX="335.0" layoutY="134.0" prefHeight="17.0" prefWidth="97.0" text="Password:" />
+      <Label layoutX="129.0" layoutY="24.0" prefHeight="17.0" prefWidth="354.0" text="Please set the following parametres , relative of your dbms" underline="true" />
+   </children>
+</AnchorPane>
