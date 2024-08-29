@@ -12,6 +12,6 @@
       <TextField fx:id="ipField" layoutX="113.0" layoutY="123.0" promptText="ex.127.0.0.1" />
       <TextField fx:id="portField" layoutX="113.0" layoutY="194.0" promptText="ex.8080" />
       <Button layoutX="113.0" layoutY="237.0" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="148.0" text="Start" />
-      <Label fx:id="errorLabel" layoutX="44.0" layoutY="75.0" prefHeight="25.0" prefWidth="171.0" text="Label" visible="false" />
+      <Label fx:id="errorLabel" layoutX="112.0" layoutY="75.0" prefHeight="26.0" prefWidth="156.0" text="Label" visible="false" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="112.0" />
    </children>
 </AnchorPane>

@@ -39,7 +39,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ClientFX Application");
+        this.primaryStage.setTitle("H-CLUS-Client");
         showScena0();
     }
     public void showScena0() throws IOException {

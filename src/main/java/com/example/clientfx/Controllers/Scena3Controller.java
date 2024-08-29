@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
@@ -19,6 +20,14 @@ public class Scena3Controller {
     public TextArea loadArea;
     private MainTest client;
     private Main main;
+
+    public void initialize() {
+        // Blocca l'input da tastiera nell'areaIP
+        loadArea.setEditable(false); // Rende l'area non modificabile
+        loadArea.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            event.consume(); // Blocca l'evento della tastiera
+        });
+    }
 
     public void setClient(MainTest client) {
         this.client=client;

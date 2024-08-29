@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +34,7 @@ public class Scena2Controller implements Initializable {
             client.setDepth(Integer.parseInt(depthField.getText()));
             client.setOption(clusteringOptions.getValue());
             client.mineDedrogramOnServer();
+            outputArea.clear();
             outputArea.appendText(client.getOutput());
             labelOption.setVisible(true);
             yesButton.setVisible(true);
@@ -40,12 +43,21 @@ public class Scena2Controller implements Initializable {
             new ErrorWindow().showErrorWindow("Mining Error","Mining Error","An error occurs during the clustering building");
             depthField.clear();
             main.showScena1();
+        } catch (NullPointerException e){
+            new ErrorWindow().showErrorWindow("Type Link Error","Type Link Error","No Type Link was selected");
+            depthField.clear();
+            main.showScena1();
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clusteringOptions.getItems().addAll("Single-Link-Distance", "Average-Link-Distance");
+        // Blocca l'input da tastiera nell'areaIP
+        outputArea.setEditable(false); // Rende l'area non modificabile
+        outputArea.addEventFilter(KeyEvent.KEY_TYPED, event -> {
+            event.consume(); // Blocca l'evento della tastiera
+        });
 
     }
 
