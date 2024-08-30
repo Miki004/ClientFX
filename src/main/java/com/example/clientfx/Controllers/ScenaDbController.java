@@ -34,27 +34,19 @@ public class ScenaDbController {
 
     public void configure(ActionEvent event) throws Exception {
         try {
-            // Recupero i dati inseriti dall'utente
             String server = serverField.getText();
             String database = databaseField.getText();
             int port = Integer.parseInt(portField.getText());
             String user = userField.getText();
             String pw = pwField.getText();
-
-            // Imposto i parametri del database sul client
             client.setDatabase(server, database, port, user, pw);
-
-            // Verifico la risposta del server (supponendo che getAnswer() ritorni un boolean)
-            boolean isConnected = client.getAnswer();  // Cambiato da String a boolean
+            boolean isConnected = client.getAnswer();
             System.out.println("Server response: " + isConnected);
-
             if (!isConnected) {
-                // Mostra la finestra di errore se la connessione è fallita
                 new ErrorWindow().showErrorWindow("Database Connection Error","Database Connection Error", "Please insert correct information");
                 clearFields();
-                main.showScenaSetDB();  // Ritorna alla scena di configurazione
+                main.showScenaSetDB();
             } else {
-                // Se la connessione è riuscita, vai alla scena successiva
                 main.showScena1();
             }
 
