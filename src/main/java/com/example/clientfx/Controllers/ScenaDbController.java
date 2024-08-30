@@ -33,30 +33,43 @@ public class ScenaDbController {
     }
 
     public void configure(ActionEvent event) throws Exception {
-        try{
+        try {
+            // Recupero i dati inseriti dall'utente
             String server = serverField.getText();
             String database = databaseField.getText();
             int port = Integer.parseInt(portField.getText());
             String user = userField.getText();
             String pw = pwField.getText();
+
+            // Imposto i parametri del database sul client
             client.setDatabase(server, database, port, user, pw);
-            if(Objects.equals(client.getAnswer(), "NO")) {
-                new ErrorWindow().showErrorWindow("Database Connection Error","Database Connection Error","please insert correct information");
+
+            // Verifico la risposta del server (supponendo che getAnswer() ritorni un boolean)
+            boolean isConnected = client.getAnswer();  // Cambiato da String a boolean
+            System.out.println("Server response: " + isConnected);
+
+            if (!isConnected) {
+                // Mostra la finestra di errore se la connessione è fallita
+                new ErrorWindow().showErrorWindow("Database Connection Error","Database Connection Error", "Please insert correct information");
                 clearFields();
-                main.showScenaSetDB();
-            }else {
+                main.showScenaSetDB();  // Ritorna alla scena di configurazione
+            } else {
+                // Se la connessione è riuscita, vai alla scena successiva
                 main.showScena1();
             }
 
-            }catch (NumberFormatException e) {
-                new ErrorWindow().showErrorWindow("Invalid Port", "Invalid Port Number", "Please enter a valid port number.");
-                clearFields();
-            } catch (IOException | ClassNotFoundException e){
-                new ErrorWindow().showErrorWindow("Connection Error", "Error during communication with server", e.getMessage());
-                clearFields();
-                main.showScenaSetDB();
-            }
+        } catch (NumberFormatException e) {
+            // Gestione dell'errore nel caso il numero di porta non sia valido
+            new ErrorWindow().showErrorWindow("Invalid Port", "Invalid Port Number", "Please enter a valid port number.");
+            clearFields();
+        } catch (IOException | ClassNotFoundException e) {
+            // Gestione dell'errore durante la comunicazione con il server
+            new ErrorWindow().showErrorWindow("Connection Error", "Error during communication with server", e.getMessage());
+            clearFields();
+            main.showScenaSetDB();  // Ritorna alla scena di configurazione
+        }
     }
+
     private void clearFields() {
         serverField.clear();
         databaseField.clear();
