@@ -17,22 +17,21 @@ public class MainTest {
     /**
      * @param args
      */
-    private Scena1Controller c1;
     private Scena2Controller c2;
     private int depth;
     private int option;
     private String output;
     private ObjectOutputStream out;
-    private ObjectInputStream in ; // stream con richieste del client
+    private ObjectInputStream in ;// stream con richieste del client
+    private Socket socket;
 
 
     public  MainTest(String ip, int port) throws IOException{
         InetAddress addr = InetAddress.getByName(ip); //ip
         System.out.println("addr = " + addr);
-        Socket socket = new Socket(addr, port); //Port
+         socket = new Socket(addr, port); //Port
         out = new ObjectOutputStream(socket.getOutputStream());
         in = new ObjectInputStream(socket.getInputStream());
-
     }
 
     public void loadDataOnServer(String nameTable) throws IOException, ClassNotFoundException {
@@ -57,8 +56,14 @@ public class MainTest {
     }
 
     public List<String> request() throws IOException, ClassNotFoundException {
-        return (List<String>) in.readObject();
-
+        List<String> risposta = null;
+        try {
+            risposta = (List<String>) in.readObject();
+            System.out.println(risposta);
+        }catch(IOException e){
+            System.out.println("erroe ");
+        }
+        return risposta;
     }
 
     public void loadDedrogramFromFileOnServer(String nameFile) throws IOException, ClassNotFoundException {
@@ -114,10 +119,20 @@ public class MainTest {
     }
 
     public boolean getAnswer() throws IOException, ClassNotFoundException {
-        if(in.readObject()=="OK") {
-            return false;
-        }else {
+        String risposta = (String) in.readObject();
+        System.out.println(risposta);
+        if(Objects.equals(risposta, "OK")) {
             return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void closeSocket() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

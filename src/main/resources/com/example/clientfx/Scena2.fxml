@@ -10,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena2Controller">
    <children>
-      <TextArea fx:id="outputArea" prefHeight="400.0" prefWidth="301.0" />
+      <TextArea fx:id="outputArea" editable="false" layoutY="15.0" prefHeight="372.0" prefWidth="301.0" />
       <Label layoutX="319.0" layoutY="34.0" prefHeight="17.0" prefWidth="80.0" text="Depth:" />
       <TextField fx:id="depthField" layoutX="416.0" layoutY="30.0" />
       <ChoiceBox fx:id="clusteringOptions" layoutX="416.0" layoutY="75.0" prefWidth="150.0" />

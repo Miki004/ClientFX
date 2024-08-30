@@ -21,11 +21,11 @@ public class Main extends Application {
     private MainTest client;
 
 
-    public static void setIp(String ip) {
+    public void setIp(String ip) {
         Main.ip = ip;
     }
 
-    public static void setPort(int port) {
+    public void setPort(int port) {
         Main.port = port;
     }
 
@@ -39,9 +39,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("ClientFX Application");
+        this.primaryStage.setTitle("H-CLUS-CLIENT");
         showScena0();
     }
+
     public void showScena0() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena0.fxml"));
         Parent root = loader.load();
@@ -128,16 +129,8 @@ public class Main extends Application {
         Parent root = loader.load();
         ScenaDbController controller = loader.getController();
         controller.setMain(this);
-        controller.setClient(this.client);
+        controller.initializeConnection(ip,port);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public int getPort() {
-        return port;
     }
 }

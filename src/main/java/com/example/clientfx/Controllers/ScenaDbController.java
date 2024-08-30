@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ScenaDbController {
     public TextField serverField;
@@ -21,42 +22,48 @@ public class ScenaDbController {
         this.main= main;
     }
 
-    public void setClient(MainTest client) {
-        this.client=client;
-    }
-
     public void initializeConnection(String ip, int port) {
         try {
+            System.out.println(ip + port);
             client = new MainTest(ip,port);
             main.setClient(client);
         } catch (IOException e) {
-
+            System.out.println("client non creato");
         }
     }
 
-    public void configure(ActionEvent event) throws IOException {
-        try {
-            initializeConnection(main.getIp(),main.getPort());
-            client.setDatabase(serverField.getText(), databaseField.getText(), Integer.parseInt(portField.getText()), userField.getText(), pwField.getText());
-            if(!client.getAnswer()) {
+    public void configure(ActionEvent event) throws Exception {
+        try{
+            String server = serverField.getText();
+            String database = databaseField.getText();
+            int port = Integer.parseInt(portField.getText());
+            String user = userField.getText();
+            String pw = pwField.getText();
+            client.setDatabase(server, database, port, user, pw);
+            if(Objects.equals(client.getAnswer(), "NO")) {
                 new ErrorWindow().showErrorWindow("Database Connection Error","Database Connection Error","please insert correct information");
-                serverField.clear();
-                databaseField.clear();
-                portField.clear();
-                userField.clear();
-                pwField.clear();
-            }else{
+                clearFields();
+                main.showScenaSetDB();
+            }else {
                 main.showScena1();
             }
-        }catch (Exception e) {
-            //settare un alert
-            new ErrorWindow().showErrorWindow("Database Connection Error","Database Connection Error","please insert correct information");
-            serverField.clear();
-            databaseField.clear();
-            portField.clear();
-            userField.clear();
-            pwField.clear();
 
-        }
+            }catch (NumberFormatException e) {
+                new ErrorWindow().showErrorWindow("Invalid Port", "Invalid Port Number", "Please enter a valid port number.");
+                clearFields();
+            } catch (IOException | ClassNotFoundException e){
+                new ErrorWindow().showErrorWindow("Connection Error", "Error during communication with server", e.getMessage());
+                clearFields();
+                main.showScenaSetDB();
+            }
     }
+    private void clearFields() {
+        serverField.clear();
+        databaseField.clear();
+        portField.clear();
+        userField.clear();
+        pwField.clear();
+    }
+
+
 }
