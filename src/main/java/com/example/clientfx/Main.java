@@ -125,7 +125,7 @@ public class Main extends Application {
     }
 
     public void showScenaSetDB() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/ScenaDB.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/ScenaDb.fxml"));
         Parent root = loader.load();
         ScenaDbController controller = loader.getController();
         controller.setMain(this);
