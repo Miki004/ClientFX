@@ -11,16 +11,24 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Scena2Controller implements Initializable {
-    public RadioButton yesButton;
-    public RadioButton noButton;
+    @FXML
+    private RadioButton yesButton;
+    @FXML
+    private RadioButton noButton;
     @FXML
     private TextField depthField;
-    public TextArea outputArea;
-    public TextField saveField;
-    public Button saveButton;
-    public Button buildButton;
-    public Label labelSave;
-    public Label labelOption;
+    @FXML
+    private TextArea outputArea;
+    @FXML
+    private TextField saveField;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button buildButton;
+    @FXML
+    private Label labelSave;
+    @FXML
+    private Label labelOption;
     @FXML
     private ChoiceBox<String> clusteringOptions;
     private MainTest client;

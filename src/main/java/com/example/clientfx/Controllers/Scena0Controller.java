@@ -14,7 +14,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Scena0Controller {
-    public Label errorLabel;
     @FXML
     private TextField ipField;
     @FXML
@@ -22,9 +21,10 @@ public class Scena0Controller {
     private Main mainGui;
 
     public void start(ActionEvent event) throws Exception {
-        String ip=ipField.getText();
-        int port = Integer.parseInt(portField.getText());
+
         try {
+            String ip=ipField.getText();
+            int port = Integer.parseInt(portField.getText());
             Socket socket = new Socket();
             socket.connect(new InetSocketAddress(ip, port), 100);
             if (socket.isConnected()) {

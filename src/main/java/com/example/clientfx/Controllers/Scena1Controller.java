@@ -16,7 +16,6 @@ public class Scena1Controller {
     private RadioButton loadButton;
     @FXML
     private RadioButton clusterButton;
-    private TextArea area;
     private MainTest client;
     @FXML
     private ListView<String> listTables;

@@ -3,6 +3,7 @@ package com.example.clientfx.Controllers;
 import com.example.clientfx.Client.MainTest;
 import com.example.clientfx.Main;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -10,11 +11,17 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ScenaDbController {
-    public TextField serverField;
-    public TextField databaseField;
-    public TextField portField;
-    public TextField userField;
-    public PasswordField pwField;
+    @FXML
+    private TextField serverField;
+    @FXML
+    private TextField databaseField;
+    @FXML
+    private TextField portField;
+    @FXML
+    private TextField userField;
+    @FXML
+    private PasswordField pwField;
+
     private Main main;
     private MainTest client;
 

@@ -12,12 +12,14 @@ import java.io.IOException;
 
 public class Scena3Controller {
     @FXML
-    public Button loadButton;
+    private Button loadButton;
     @FXML
-    public TextField loadField;
+    private TextField loadField;
     @FXML
-    public TextArea loadArea;
-    public Button backButton;
+    private TextArea loadArea;
+    @FXML
+    private Button backButton;
+
     private MainTest client;
     private Main main;
 
