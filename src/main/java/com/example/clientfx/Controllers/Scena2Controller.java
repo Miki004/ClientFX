@@ -40,6 +40,8 @@ public class Scena2Controller implements Initializable {
             new ErrorWindow().showErrorWindow("Mining Error","Mining Error","An error occurs during the clustering building");
             depthField.clear();
             main.showScena1();
+        }catch(NullPointerException e) {
+            new ErrorWindow().showErrorWindow("Type Error","Type Error","Please select a type of clustering");
         }
     }
 
