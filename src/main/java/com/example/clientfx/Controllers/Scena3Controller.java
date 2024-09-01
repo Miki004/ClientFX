@@ -17,6 +17,7 @@ public class Scena3Controller {
     public TextField loadField;
     @FXML
     public TextArea loadArea;
+    public Button backButton;
     private MainTest client;
     private Main main;
 
@@ -33,11 +34,20 @@ public class Scena3Controller {
         } catch (IOException | ClassNotFoundException e) {
             new ErrorWindow().showErrorWindow("Loading Error","Loading Error","An error occurs during the clustering uploading");
         }
+        backButton.setVisible(true);
     }
 
     public void setMain(Main main) {
         this.main=main;
     }
 
+    public void backScene(ActionEvent event) {
+        try {
+            main.showScena1();
+        }catch(Exception e) {
+            new ErrorWindow().showErrorWindow("Error","Error","An error occurs during the turning back");
+        }
+
+    }
 }
 

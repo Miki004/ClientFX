@@ -8,9 +8,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientfx.Controllers.Scena3Controller">
    <children>
-      <Button fx:id="loadButton" layoutX="410.0" layoutY="51.0" mnemonicParsing="false" onAction="#loadClustering" prefHeight="25.0" prefWidth="69.0" text="Load" />
-      <TextField fx:id="loadField" layoutX="213.0" layoutY="51.0" />
-      <Label layoutX="55.0" layoutY="51.0" prefHeight="25.0" prefWidth="134.0" text="Insert the file's name:" />
-      <TextArea fx:id="loadArea" editable="false" layoutX="12.0" layoutY="113.0" prefHeight="276.0" prefWidth="575.0" />
+      <Button fx:id="loadButton" layoutX="388.0" layoutY="147.0" mnemonicParsing="false" onAction="#loadClustering" prefHeight="25.0" prefWidth="69.0" text="Load" />
+      <TextField fx:id="loadField" layoutX="388.0" layoutY="94.0" />
+      <Label layoutX="388.0" layoutY="49.0" prefHeight="25.0" prefWidth="134.0" text="Insert the file's name:" />
+      <TextArea fx:id="loadArea" editable="false" layoutX="12.0" layoutY="12.0" prefHeight="377.0" prefWidth="339.0" />
+      <Button fx:id="backButton" layoutX="503.0" layoutY="340.0" mnemonicParsing="false" onAction="#backScene" prefHeight="25.0" prefWidth="69.0" text="Back" visible="false" />
    </children>
 </Pane>
