@@ -10,6 +10,10 @@ import javafx.scene.control.TextArea;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller per la scena che gestisce la selezione delle tabelle e l'operazione da eseguire.
+ * Permette all'utente di caricare dati o eseguire clustering.
+ */
 public class Scena1Controller {
 
     @FXML
@@ -23,6 +27,10 @@ public class Scena1Controller {
     private static int count=0;
     private static List<String> list;
 
+    /**
+     * Inizializza la lista delle tabelle se non è già stata inizializzata.
+     * Recupera la lista delle tabelle dal server e la visualizza nella lista delle tabelle.
+     */
     public void initializeTables() {
         if (count==0) {
             try {
@@ -37,6 +45,11 @@ public class Scena1Controller {
         listTables.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Gestisce l'azione del pulsante per eseguire l'operazione selezionata (caricamento dati o clustering).
+     *
+     * @param event l'evento di clic sul pulsante.
+     */
     public void execute(ActionEvent event)  {
 
         if(loadButton.isSelected()) {
@@ -66,10 +79,21 @@ public class Scena1Controller {
 
         }
     }
+
+    /**
+     * Imposta il riferimento alla GUI principale dell'applicazione.
+     *
+     * @param mainGui il riferimento alla GUI principale.
+     */
     public void setMainGui(Main mainGui) {
         this.mainGui = mainGui;
     }
 
+    /**
+     * Imposta il riferimento al client per comunicare con il server.
+     *
+     * @param client il client utilizzato per le comunicazioni con il server.
+     */
     public void setClient(MainTest client) {
         this.client=client;
     }

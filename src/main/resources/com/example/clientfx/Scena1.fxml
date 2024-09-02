@@ -13,6 +13,6 @@
       <Label layoutX="368.0" layoutY="29.0" prefHeight="17.0" prefWidth="180.0" text="Please select an option" />
       <Label layoutX="25.0" layoutY="21.0" prefHeight="17.0" prefWidth="218.0" text="Please select a table" />
       <Button fx:id="excuteButton" layoutX="368.0" layoutY="259.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="150.0" text="Execute" />
-      <ListView fx:id="listTables" layoutY="46.0" prefHeight="354.0" prefWidth="283.0" />
+      <ListView fx:id="listTables" layoutX="12.0" layoutY="45.0" prefHeight="343.0" prefWidth="283.0" />
    </children>
 </Pane>

@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controller per la scena di configurazione del database.
+ * Permette all'utente di configurare la connessione al database inserendo le informazioni necessarie.
+ */
 public class ScenaDbController {
     @FXML
     private TextField serverField;
@@ -25,10 +29,21 @@ public class ScenaDbController {
     private Main main;
     private MainTest client;
 
+    /**
+     * Imposta il riferimento alla GUI principale dell'applicazione.
+     *
+     * @param main il riferimento alla GUI principale.
+     */
     public void setMain(Main main) {
         this.main= main;
     }
 
+    /**
+     * Inizializza la connessione al server utilizzando l'indirizzo IP e il numero di porta forniti.
+     *
+     * @param ip l'indirizzo IP del server.
+     * @param port il numero di porta del server.
+     */
     public void initializeConnection(String ip, int port) {
         try {
             System.out.println(ip + port);
@@ -39,6 +54,12 @@ public class ScenaDbController {
         }
     }
 
+    /**
+     * Configura la connessione al database utilizzando le informazioni inserite nei campi di testo.
+     *
+     * @param event l'evento di clic sul pulsante di configurazione.
+     * @throws Exception se si verifica un errore durante la configurazione della connessione.
+     */
     public void configure(ActionEvent event) throws Exception {
         try {
             String server = serverField.getText();
@@ -69,6 +90,9 @@ public class ScenaDbController {
         }
     }
 
+    /**
+     * Pulisce tutti i campi di testo.
+     */
     private void clearFields() {
         serverField.clear();
         databaseField.clear();
@@ -76,6 +100,4 @@ public class ScenaDbController {
         userField.clear();
         pwField.clear();
     }
-
-
 }

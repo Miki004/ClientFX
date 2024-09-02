@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+/**
+ * Controller per la scena che gestisce il caricamento e la visualizzazione del clustering.
+ * Permette all'utente di caricare un clustering da un file e di visualizzare i risultati.
+ */
 public class Scena3Controller {
     @FXML
     private Button loadButton;
@@ -23,10 +27,20 @@ public class Scena3Controller {
     private MainTest client;
     private Main main;
 
+    /**
+     * Imposta il riferimento al client per comunicare con il server.
+     *
+     * @param client il client utilizzato per le comunicazioni con il server.
+     */
     public void setClient(MainTest client) {
         this.client=client;
     }
 
+    /**
+     * Carica il clustering dal file specificato e visualizza i risultati nell'area di testo.
+     *
+     * @param event l'evento di clic sul pulsante di caricamento.
+     */
     public void loadClustering(ActionEvent event) {
         try {
             loadArea.clear();
@@ -39,10 +53,26 @@ public class Scena3Controller {
         backButton.setVisible(true);
     }
 
+    /**
+     * Imposta il riferimento alla GUI principale dell'applicazione.
+     *
+     * @param main il riferimento alla GUI principale.
+     */
     public void setMain(Main main) {
         this.main=main;
     }
 
+    /**
+     * Gestisce l'evento di azione per tornare alla scena precedente.
+     *
+     * Questo metodo viene attivato quando si verifica un'azione da parte dell'utente, come il clic su un pulsante.
+     * Tenta di mostrare la scena precedente invocando il metodo `showScena1()` sull'oggetto principale dell'applicazione.
+     * Se si verifica un'eccezione durante questo processo, viene catturata e viene visualizzato un messaggio di errore
+     * in una nuova finestra di errore.
+     *
+     *
+     * @param event L'ActionEvent che ha attivato questo metodo, tipicamente associato a un'azione dell'utente.
+     */
     public void backScene(ActionEvent event) {
         try {
             main.showScena1();

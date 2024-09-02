@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller per la scena che gestisce la costruzione e il salvataggio dei cluster.
+ * Permette all'utente di configurare i parametri di clustering e di salvare i risultati.
+ */
 public class Scena2Controller implements Initializable {
     @FXML
     private RadioButton yesButton;
@@ -35,6 +39,13 @@ public class Scena2Controller implements Initializable {
     private String nameFile;
     private Main main;
 
+    /**
+     * Costruisce il clustering utilizzando i parametri specificati e visualizza l'output.
+     * Mostra le opzioni di salvataggio se la costruzione ha successo.
+     *
+     * @param event l'evento di clic sul pulsante di costruzione.
+     * @throws Exception se si verifica un errore durante la costruzione del clustering.
+     */
     public void buildCluster(ActionEvent event) throws Exception {
         try {
             client.setDepth(Integer.parseInt(depthField.getText()));
@@ -53,16 +64,32 @@ public class Scena2Controller implements Initializable {
         }
     }
 
+    /**
+     * Inizializza il controller e carica le opzioni di clustering nella scelta.
+     *
+     * @param url l'URL relativo al file FXML.
+     * @param resourceBundle il ResourceBundle per la localizzazione.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         clusteringOptions.getItems().addAll("Single-Link-Distance", "Average-Link-Distance");
 
     }
 
+    /**
+     * Imposta il riferimento al client per comunicare con il server.
+     *
+     * @param client il client utilizzato per le comunicazioni con il server.
+     */
     public void setClient(MainTest client) {
         this.client=client;
     }
 
+    /**
+     * Salva il clustering utilizzando il nome del file specificato.
+     *
+     * @param event l'evento di clic sul pulsante di salvataggio.
+     */
     public void saveCluster(ActionEvent event) {
             try {
                 nameFile=saveField.getText();
@@ -73,20 +100,40 @@ public class Scena2Controller implements Initializable {
             }
     }
 
+    /**
+     * Restituisce il nome del file per il salvataggio del clustering.
+     *
+     * @return il nome del file.
+     */
     public String getNameFile() {
         return nameFile;
     }
 
+    /**
+     * Mostra i controlli per il salvataggio del clustering.
+     *
+     * @param event l'evento di clic sul pulsante per mostrare le opzioni di salvataggio.
+     */
     public void showSave(ActionEvent event) {
             labelSave.setVisible(true);
             saveField.setVisible(true);
             saveButton.setVisible(true);
     }
 
+    /**
+     * Imposta il riferimento alla GUI principale dell'applicazione.
+     *
+     * @param main il riferimento alla GUI principale.
+     */
     public void setMain(Main main) {
         this.main=main;
     }
 
+    /**
+     * Torna alla scena 1.
+     *
+     * @param event l'evento di clic sul pulsante per tornare indietro.
+     */
     public void goBack(ActionEvent event) {
         try {
             main.showScena1();

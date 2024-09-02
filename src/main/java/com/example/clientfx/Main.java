@@ -20,11 +20,20 @@ public class Main extends Application {
     private static int port;
     private MainTest client;
 
-
+    /**
+     * Imposta l'indirizzo IP del server.
+     *
+     * @param ip l'indirizzo IP del server.
+     */
     public void setIp(String ip) {
         Main.ip = ip;
     }
 
+    /**
+     * Imposta il numero di porta del server.
+     *
+     * @param port il numero di porta del server.
+     */
     public void setPort(int port) {
         Main.port = port;
     }
@@ -43,6 +52,11 @@ public class Main extends Application {
         showScena0();
     }
 
+    /**
+     * Mostra la scena 0 (la scena di avvio) dell'applicazione.
+     *
+     * @throws IOException Se si verifica un errore durante il caricamento della scena FXML.
+     */
     public void showScena0() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/Scena0.fxml"));
         Parent root = loader.load();
@@ -98,7 +112,6 @@ public class Main extends Application {
      *             il secondo è la porta del server.
      */
     public static void main(String[] args) {
-
         launch(args);
     }
 
@@ -120,10 +133,20 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Imposta l'oggetto client per comunicare con il server.
+     *
+     * @param client l'oggetto client.
+     */
     public void setClient(MainTest client) {
         this.client=client;
     }
 
+    /**
+     * Mostra la scena di configurazione del database.
+     *
+     * @throws IOException Se si verifica un errore durante il caricamento della scena FXML.
+     */
     public void showScenaSetDB() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/clientfx/ScenaDb.fxml"));
         Parent root = loader.load();

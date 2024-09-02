@@ -13,6 +13,10 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * Controller per la scena di connessione iniziale dell'applicazione client.
+ * Gestisce l'inserimento dell'indirizzo IP e del numero di porta e verifica la connessione al server.
+ */
 public class Scena0Controller {
     @FXML
     private TextField ipField;
@@ -20,6 +24,12 @@ public class Scena0Controller {
     private TextField portField;
     private Main mainGui;
 
+    /**
+     * Gestisce l'evento di clic sul pulsante di avvio per connettersi al server.
+     *
+     * @param event l'evento di clic sul pulsante.
+     * @throws Exception se si verifica un errore durante il tentativo di connessione.
+     */
     public void start(ActionEvent event) throws Exception {
 
         try {
@@ -46,6 +56,11 @@ public class Scena0Controller {
 
     }
 
+    /**
+     * Imposta il riferimento alla GUI principale.
+     *
+     * @param mainGui il riferimento alla GUI principale.
+     */
     public void setMainGui(Main mainGui) {
         this.mainGui = mainGui;
     }
