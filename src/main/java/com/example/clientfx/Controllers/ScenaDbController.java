@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Controller per la scena di configurazione del database.
@@ -63,10 +64,14 @@ public class ScenaDbController {
     public void configure(ActionEvent event) throws Exception {
         try {
             String server = serverField.getText();
+            SettingDbException.verificaVuoto(server);
             String database = databaseField.getText();
+            SettingDbException.verificaVuoto(database);
             int port = Integer.parseInt(portField.getText());
             String user = userField.getText();
+            SettingDbException.verificaVuoto(user);
             String pw = pwField.getText();
+            SettingDbException.verificaVuoto(pw);
             client.setDatabase(server, database, port, user, pw);
             boolean isConnected = client.getAnswer();
             System.out.println("Server response: " + isConnected);
@@ -87,6 +92,9 @@ public class ScenaDbController {
             new ErrorWindow().showErrorWindow("Connection Error", "Error during communication with server", e.getMessage());
             clearFields();
             main.showScenaSetDB();  // Ritorna alla scena di configurazione
+        }catch (SettingDbException e) {
+            new ErrorWindow().showErrorWindow("Connection Error", "Connection Error ","Some parametres could be" );
+
         }
     }
 
