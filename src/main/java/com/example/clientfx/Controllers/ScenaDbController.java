@@ -93,7 +93,7 @@ public class ScenaDbController {
             clearFields();
             main.showScenaSetDB();  // Ritorna alla scena di configurazione
         }catch (SettingDbException e) {
-            new ErrorWindow().showErrorWindow("Connection Error", "Connection Error ","Some parametres could be" );
+            new ErrorWindow().showErrorWindow("Connection Error", "Connection Error ","Some parametres could be null" );
 
         }
     }
